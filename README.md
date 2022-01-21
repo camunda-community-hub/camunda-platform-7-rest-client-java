@@ -1,2 +1,116 @@
-# camunda-engine-rest-client-java
-Community extension to generate a Java client from the provided Camunda 7 OpenAPI descitpion and also warp it into Spring Boot
+# Camunda Engine OpenAPI REST Client wrapper Java and Spring Boot
+
+This community extension is a convenience wrapper around the generated Java client from the Camunda Platform 7.x OpenAPI spec. 
+
+## Plain Java
+
+In a plain Java project you can simply add this dependency:
+
+```
+<dependency>
+    <groupId>org.camunda.community</groupId>
+    <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
+    <version>7.16.0-SNAPSHOT</version>
+</dependency>
+```
+
+Now you can use the `ApiClient` and various generated artifacts, for example:
+
+`
+ public static void main(String[] args) throws ApiException {
+    ApiClient client = new ApiClient("http://localhost:8080/engine-rest");
+
+    new DeploymentApi(client).createDeployment(
+            null,
+            null,
+            true,
+            true,
+            "benchmark",
+            null,
+            new File(App.class.getClassLoader().getResource(bpmnXmlPath).getFile())
+    );
+    System.out.println("DEPLOYED");
+
+    new ProcessDefinitionApi(client).startProcessInstanceByKey(
+            processId,
+            new StartProcessInstanceDto()
+                    .variables(Collections.singletonMap("json", new VariableValueDto().value("test").type("string"))));
+
+    System.out.println("STARTED");
+  }
+`
+
+## Spring Boot Starter
+
+For convenience, there is also a Spring Boot Starter, that
+
+* Wires the ApiClient and provide all API's
+* Autodeploys all BPMN, DMN and form resources it finds on the classpath during startup.
+
+Add this dependency: 
+
+```
+<dependency>
+    <groupId>org.camunda.community</groupId>
+    <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
+    <version>7.16.0-SNAPSHOT</version>
+</dependency>
+```
+
+You can configure the Camunda endpoint via your `application.properties`:
+
+```
+camunda.bpm.client.base-url: http://localhost:8080/engine-rest
+```
+
+And then simply inject the API, for example:
+
+```
+@RestController
+public class ExampleRestEndpoint {
+
+    @Autowired
+    private ProcessDefinitionApi processDefinitionApi;
+
+    @PutMapping("/start")
+    public ResponseEntity<String> startProcess(ServerWebExchange exchange) throws ApiException {
+        // ...
+
+        // start process instance
+        ProcessInstanceWithVariablesDto processInstance = processDefinitionApi.startProcessInstanceByKey(
+                ProcessConstants.PROCESS_KEY,
+                new StartProcessInstanceDto().variables(variables));
+        // ...
+```
+
+## Spring Boot OpenAPI + External Task Bundle
+
+Most often you might also want to use the OpenAPI, but also leverage the [Camunda External Task Client as Spring Boot Starter](https://github.com/camunda/camunda-bpm-platform/tree/master/spring-boot-starter/starter-client). TO do so you can simply add this convenience library which bundles both:
+
+```
+    <dependency>
+        <groupId>org.camunda.community</groupId>
+        <artifactId>camunda-engine-rest-client-complete-springboot-starter</artifactId>
+        <version>7.16.0-SNAPSHOT</version>
+    </dependency>
+```
+
+Now you further simply add workers, for example:
+
+```
+@Configuration
+@ExternalTaskSubscription("check-number")
+public class ExampleCheckNumberWorker implements ExternalTaskHandler {
+
+    private final static Logger LOGGER = Logger.getLogger(ExampleCheckNumberWorker.class.getName());
+
+    @Override
+    public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
+      // ...
+      externalTaskService.complete(externalTask);
+    }
+```
+
+## Example Application
+
+An example application using this community extension in a Spring Boot context can be found here: https://github.com/berndruecker/camunda-platform-remote-spring-boot-example
