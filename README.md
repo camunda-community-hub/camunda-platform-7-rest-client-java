@@ -1,5 +1,7 @@
 # Camunda Engine OpenAPI REST Client wrapper Java and Spring Boot
 
+[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community) [![](https://img.shields.io/badge/Lifecycle-Incubating-blue)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#incubating-) 
+
 This community extension is a convenience wrapper around the generated Java client from the Camunda Platform 7.x OpenAPI spec. 
 
 ## Plain Java
