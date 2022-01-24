@@ -4,7 +4,13 @@
 
 This community extension is a convenience wrapper around the generated Java client from the Camunda Platform 7.x OpenAPI spec. 
 
-## Plain Java
+## Example application
+
+An example application using this community extension in a Spring Boot context can be found here: https://github.com/berndruecker/camunda-platform-remote-spring-boot-example
+
+## Using the client
+
+### Plain Java
 
 In a plain Java project you can simply add this dependency:
 
@@ -42,7 +48,7 @@ Now you can use the `ApiClient` and various generated artifacts, for example:
   }
 `
 
-## Spring Boot Starter
+### Spring Boot Starter
 
 For convenience, there is also a Spring Boot Starter, that
 
@@ -85,7 +91,7 @@ public class ExampleRestEndpoint {
         // ...
 ```
 
-## Spring Boot OpenAPI + External Task Bundle
+### Spring Boot OpenAPI + External Task Bundle
 
 Most often you might also want to use the OpenAPI, but also leverage the [Camunda External Task Client as Spring Boot Starter](https://github.com/camunda/camunda-bpm-platform/tree/master/spring-boot-starter/starter-client). TO do so you can simply add this convenience library which bundles both:
 
@@ -113,6 +119,3 @@ public class ExampleCheckNumberWorker implements ExternalTaskHandler {
     }
 ```
 
-## Example Application
-
-An example application using this community extension in a Spring Boot context can be found here: https://github.com/berndruecker/camunda-platform-remote-spring-boot-example
