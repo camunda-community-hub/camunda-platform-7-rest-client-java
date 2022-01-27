@@ -15,16 +15,16 @@ An example application using this community extension in a Spring Boot context c
 In a plain Java project you can simply add this dependency:
 
 ```
-<dependency>
-    <groupId>org.camunda.community</groupId>
-    <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
-    <version>7.16.0-SNAPSHOT</version>
-</dependency>
+    <dependency>
+      <groupId>org.camunda.community</groupId>
+      <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
+      <version>7.16.0-alpha1</version>
+    </dependency>
 ```
 
 Now you can use the `ApiClient` and various generated artifacts, for example:
 
-`
+```
  public static void main(String[] args) throws ApiException {
     ApiClient client = new ApiClient("http://localhost:8080/engine-rest");
 
@@ -46,7 +46,7 @@ Now you can use the `ApiClient` and various generated artifacts, for example:
 
     System.out.println("STARTED");
   }
-`
+```
 
 ### Spring Boot Starter
 
@@ -58,11 +58,11 @@ For convenience, there is also a Spring Boot Starter, that
 Add this dependency: 
 
 ```
-<dependency>
-    <groupId>org.camunda.community</groupId>
-    <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
-    <version>7.16.0-SNAPSHOT</version>
-</dependency>
+    <dependency>
+      <groupId>org.camunda.community</groupId>
+      <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
+      <version>7.16.0-alpha1</version>
+    </dependency>
 ```
 
 You can configure the Camunda endpoint via your `application.properties`:
@@ -93,13 +93,13 @@ public class ExampleRestEndpoint {
 
 ### Spring Boot OpenAPI + External Task Bundle
 
-Most often you might also want to use the OpenAPI, but also leverage the [Camunda External Task Client as Spring Boot Starter](https://github.com/camunda/camunda-bpm-platform/tree/master/spring-boot-starter/starter-client). TO do so you can simply add this convenience library which bundles both:
+Most often you might also want to use the OpenAPI, but also leverage the [Camunda External Task Client as Spring Boot Starter](https://github.com/camunda/camunda-bpm-platform/tree/master/spring-boot-starter/starter-client). To do so you can simply add this convenience library which bundles both:
 
 ```
     <dependency>
-        <groupId>org.camunda.community</groupId>
-        <artifactId>camunda-engine-rest-client-complete-springboot-starter</artifactId>
-        <version>7.16.0-SNAPSHOT</version>
+      <groupId>org.camunda.community</groupId>
+      <artifactId>camunda-engine-rest-client-complete-springboot-starter</artifactId>
+      <version>7.16.0-SNAPSHOT</version>
     </dependency>
 ```
 
