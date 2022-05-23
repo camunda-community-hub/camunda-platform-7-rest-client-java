@@ -18,7 +18,7 @@ In a plain Java project you can simply add this dependency:
     <dependency>
       <groupId>org.camunda.community</groupId>
       <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
-      <version>7.16.0-alpha1</version>
+      <version>7.17.0</version>
     </dependency>
 ```
 
@@ -61,7 +61,7 @@ Add this dependency:
     <dependency>
       <groupId>org.camunda.community</groupId>
       <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
-      <version>7.16.0-alpha1</version>
+      <version>7.17.0</version>
     </dependency>
 ```
 
@@ -99,7 +99,7 @@ Most often you might also want to use the OpenAPI, but also leverage the [Camund
     <dependency>
       <groupId>org.camunda.community</groupId>
       <artifactId>camunda-engine-rest-client-complete-springboot-starter</artifactId>
-      <version>7.16.0-SNAPSHOT</version>
+      <version>7.17.0</version>
     </dependency>
 ```
 
