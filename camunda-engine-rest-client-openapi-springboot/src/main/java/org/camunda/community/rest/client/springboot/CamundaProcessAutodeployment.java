@@ -24,13 +24,13 @@ public class CamundaProcessAutodeployment {
     private DeploymentApi deploymentApi;
 
     // TODO Possible extension: Provide a @Deployment annotation like Spring Zeebe
-    @Value("classpath*:**/*.bpmn")
+    @Value("${camunda.autoDeploy.bpmnResources:'classpath*:**/*.bpmn'")
     private Resource[] bpmnResources;
 
-    @Value("classpath*:**/*.dmn")
+    @Value("${camunda.autoDeploy.dmnResources:'classpath*:**/*.dmn'")
     private Resource[] dmnResources;
 
-    @Value("classpath*:**/*.form")
+    @Value("${camunda.autoDeploy.formResources:'classpath*:**/*.form'")
     private Resource[] formResources;
 
     @Value("${spring.application.name:spring-app}")

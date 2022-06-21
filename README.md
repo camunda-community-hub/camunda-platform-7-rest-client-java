@@ -91,6 +91,16 @@ public class ExampleRestEndpoint {
         // ...
 ```
 
+#### Auto Deployment
+
+You can auto-deploy resources from your project, like BPMN processes. As default, all `.bpmn`, `.dmn`, and `.form` files are picked up and deployed. The pattern for resource files can be configured:
+
+```
+camunda.autoDeploy.bpmnResources: 'classpath*:**/*.bpmn'
+camunda.autoDeploy.dmnResources: 'classpath*:**/*.dmn'
+camunda.autoDeploy.formResources: 'classpath*:**/*.form'
+```
+
 ### Spring Boot OpenAPI + External Task Bundle
 
 Most often you might also want to use the OpenAPI, but also leverage the [Camunda External Task Client as Spring Boot Starter](https://github.com/camunda/camunda-bpm-platform/tree/master/spring-boot-starter/starter-client). To do so you can simply add this convenience library which bundles both:
