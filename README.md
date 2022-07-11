@@ -10,6 +10,8 @@ An example application using this community extension in a Spring Boot context c
 
 ## Using the client
 
+The camunda endpoint in the `ApiClient` is by default `http://localhost:8080/engine-rest`, if you use a diffrent path then set it through *`setBasePath`* method of the `ApiClient`.
+
 ### Plain Java
 
 In a plain Java project you can simply add this dependency:
@@ -26,7 +28,8 @@ Now you can use the `ApiClient` and various generated artifacts, for example:
 
 ```
  public static void main(String[] args) throws ApiException {
-    ApiClient client = new ApiClient("http://localhost:8080/engine-rest");
+    ApiClient client = new ApiClient();
+    client.setBasePath("http://localhost:8080/engine-rest");
 
     new DeploymentApi(client).createDeployment(
             null,
@@ -65,7 +68,7 @@ Add this dependency:
     </dependency>
 ```
 
-You can configure the Camunda endpoint via your `application.properties`:
+You can configure the Camunda *endpoint* via your `application.properties` and initialize the client been like this:
 
 ```
 camunda.bpm.client.base-url: http://localhost:8080/engine-rest
