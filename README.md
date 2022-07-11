@@ -73,27 +73,7 @@ You can configure the Camunda *endpoint* via your `application.properties` and i
 ```
 camunda.bpm.client.base-url: http://localhost:8080/engine-rest
 ```
-```
-@Configuration
-public class CamundaOpenApiStarter {
-    
-    // ...
-    @Value( "${camunda.bpm.client.base-url:null}" )
-    private String basePath;
 
-    // ...
-    @Bean
-    public ApiClient createApiClient() {
-        ApiClient client = new ApiClient();
-        if (basePath!=null) {
-            client.setBasePath(basePath);
-        }
-        return client;
-    }
-    // ...
-
-}
-```
 And then simply inject the API, for example:
 
 ```
