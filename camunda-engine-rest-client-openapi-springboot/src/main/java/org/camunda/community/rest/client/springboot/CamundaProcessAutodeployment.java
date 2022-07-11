@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Auto deploys all Camunda resources found on classpath during startup of the application
@@ -61,8 +62,7 @@ public class CamundaProcessAutodeployment {
         resourcesToDeploy.addAll(Arrays.asList( patternResolver.getResources(formResourcesPattern) ));
 
         for (Resource camundaResource: resourcesToDeploy) {
-            //ResourceUtils.getFile(camundaResource.getURI());
-            final File tempFile = File.createTempFile(camundaResource.getFilename(), ".tmp");
+            final File tempFile = File.createTempFile(UUID.randomUUID().toString(), ".tmp");
             tempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
                 IOUtils.copy(camundaResource.getInputStream(), out);
