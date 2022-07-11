@@ -1,5 +1,6 @@
 package org.camunda.community.rest.client.springboot;
 
+import org.apache.commons.io.IOUtils;
 import org.camunda.community.rest.client.api.DeploymentApi;
 import org.camunda.community.rest.client.invoker.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +8,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.util.ResourceUtils;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,6 +61,12 @@ public class CamundaProcessAutodeployment {
         resourcesToDeploy.addAll(Arrays.asList( patternResolver.getResources(formResourcesPattern) ));
 
         for (Resource camundaResource: resourcesToDeploy) {
+            //ResourceUtils.getFile(camundaResource.getURI());
+            final File tempFile = File.createTempFile(camundaResource.getFilename(), ".tmp");
+            tempFile.deleteOnExit();
+            try (FileOutputStream out = new FileOutputStream(tempFile)) {
+                IOUtils.copy(camundaResource.getInputStream(), out);
+            }
             deploymentApi.createDeployment(
                     null,
                     null,
@@ -64,7 +74,7 @@ public class CamundaProcessAutodeployment {
                     true, // duplicateFiltering
                     applicationName + "-" + camundaResource.getFilename(), // deploymentName
                     null,
-                    camundaResource.getFile());
+                    tempFile);
             // deploying the files one by one because of limitation of OpenAPI at the moment
             // see https://jira.camunda.com/browse/CAM-13105
         }
