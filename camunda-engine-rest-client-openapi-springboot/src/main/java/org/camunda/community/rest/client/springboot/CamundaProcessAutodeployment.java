@@ -38,7 +38,7 @@ public class CamundaProcessAutodeployment {
     @Value("${camunda.autoDeploy.dmnResources:}")
     private String dmnResourcesPattern;
 
-    @Value("${camunda.autoDeploy.formResources:")
+    @Value("${camunda.autoDeploy.formResources:}")
     private String formResourcesPattern;
 
     @Value("${spring.application.name:spring-app}")
