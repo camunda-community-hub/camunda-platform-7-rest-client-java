@@ -3,6 +3,8 @@ package org.camunda.community.rest.client.springboot;
 import org.apache.commons.io.IOUtils;
 import org.camunda.community.rest.client.api.DeploymentApi;
 import org.camunda.community.rest.client.invoker.ApiException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +26,8 @@ import java.util.UUID;
  */
 @Configuration
 public class CamundaProcessAutodeployment {
+
+    private Logger logger = LoggerFactory.getLogger(CamundaProcessAutodeployment.class);
 
     @Autowired
     private DeploymentApi deploymentApi;
@@ -61,12 +65,15 @@ public class CamundaProcessAutodeployment {
         resourcesToDeploy.addAll(Arrays.asList( patternResolver.getResources(dmnResourcesPattern) ));
         resourcesToDeploy.addAll(Arrays.asList( patternResolver.getResources(formResourcesPattern) ));
 
+        logger.info("Found resources for deployment: " + resourcesToDeploy);
+
         for (Resource camundaResource: resourcesToDeploy) {
             final File tempFile = File.createTempFile(UUID.randomUUID().toString(), ".tmp");
             tempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
                 IOUtils.copy(camundaResource.getInputStream(), out);
             }
+            logger.info("  - Now deploying: " + camundaResource);
             deploymentApi.createDeployment(
                     null,
                     null,
