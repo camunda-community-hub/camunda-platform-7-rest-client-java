@@ -60,15 +60,19 @@ public class CamundaProcessAutodeployment {
             formResourcesPattern = "classpath*:**/*.form";
         }
 
-        List<Resource> resourcesToDeploy = new ArrayList<>();
-        resourcesToDeploy.addAll(Arrays.asList( patternResolver.getResources(bpmnResourcesPattern) ));
-        resourcesToDeploy.addAll(Arrays.asList( patternResolver.getResources(dmnResourcesPattern) ));
-        resourcesToDeploy.addAll(Arrays.asList( patternResolver.getResources(formResourcesPattern) ));
+        deployResources(Arrays.asList(patternResolver.getResources(bpmnResourcesPattern)), "bpmn");
+        deployResources(Arrays.asList(patternResolver.getResources(dmnResourcesPattern)), "dmn");
+        deployResources(Arrays.asList(patternResolver.getResources(formResourcesPattern)), "form");
+    }
 
-        logger.info("Found resources for deployment: " + resourcesToDeploy);
-
+    private void deployResources(List<Resource> resourcesToDeploy, String type) throws IOException, ApiException {
+        logger.info("Found resources for deployment of type "+ type +": " + resourcesToDeploy);
         for (Resource camundaResource: resourcesToDeploy) {
-            final File tempFile = File.createTempFile(UUID.randomUUID().toString(), ".tmp");
+            // We have to create a tmpFile because we need to read the files via InputStream to work also in a jar-packed environment
+            // but the OpenAPI will need a File.
+            // We still have to set the file ending correct in the temp file
+            // (because otherwise the deployer will not pick it up as e.g. BPMN file)
+            final File tempFile = File.createTempFile(UUID.randomUUID().toString(),"." + type);
             tempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
                 IOUtils.copy(camundaResource.getInputStream(), out);
