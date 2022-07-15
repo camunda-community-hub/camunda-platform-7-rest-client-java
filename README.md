@@ -14,13 +14,13 @@ The camunda endpoint in the `ApiClient` is by default `http://localhost:8080/eng
 
 ### Plain Java
 
-In a plain Java project you can simply add this dependency:
+In a plain Java project you can simply add this dependency (**please make sure to use the latest version as there were a couple of important bug fixes lately**):
 
 ```
     <dependency>
       <groupId>org.camunda.community</groupId>
       <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
-      <version>7.17.1</version>
+      <version>7.17.4</version>
     </dependency>
 ```
 
