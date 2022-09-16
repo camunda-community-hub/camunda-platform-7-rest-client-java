@@ -1,5 +1,6 @@
 package org.camunda.community.rest.client.springboot;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.camunda.community.rest.client.api.DeploymentApi;
 import org.camunda.community.rest.client.invoker.ApiException;
@@ -72,7 +73,8 @@ public class CamundaProcessAutodeployment {
             // but the OpenAPI will need a File.
             // We still have to set the file ending correct in the temp file
             // (because otherwise the deployer will not pick it up as e.g. BPMN file)
-            final File tempFile = File.createTempFile(UUID.randomUUID().toString(),"." + type);
+            String tempDirectoryName = FileUtils.getTempDirectory().getAbsolutePath();
+            final File tempFile = new File(tempDirectoryName + File.separator + camundaResource.getFilename());
             tempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
                 IOUtils.copy(camundaResource.getInputStream(), out);
