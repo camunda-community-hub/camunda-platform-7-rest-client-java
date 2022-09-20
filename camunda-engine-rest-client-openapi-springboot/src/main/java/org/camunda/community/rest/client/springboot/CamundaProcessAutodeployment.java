@@ -1,5 +1,6 @@
 package org.camunda.community.rest.client.springboot;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.camunda.community.rest.client.api.DeploymentApi;
 import org.camunda.community.rest.client.invoker.ApiException;
@@ -10,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
-import org.springframework.util.ResourceUtils;
+import org.springframework.util.DigestUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -72,7 +73,9 @@ public class CamundaProcessAutodeployment {
             // but the OpenAPI will need a File.
             // We still have to set the file ending correct in the temp file
             // (because otherwise the deployer will not pick it up as e.g. BPMN file)
-            final File tempFile = File.createTempFile(UUID.randomUUID().toString(),"." + type);
+            String tempDirectoryName = FileUtils.getTempDirectory().getAbsolutePath();
+            String filename = getResourceFilename(camundaResource, type);
+            final File tempFile = new File(tempDirectoryName + File.separator + filename);
             tempFile.deleteOnExit();
             try (FileOutputStream out = new FileOutputStream(tempFile)) {
                 IOUtils.copy(camundaResource.getInputStream(), out);
@@ -83,11 +86,19 @@ public class CamundaProcessAutodeployment {
                     null,
                     true, // changedOnly
                     true, // duplicateFiltering
-                    applicationName + "-" + camundaResource.getFilename(), // deploymentName
+                    applicationName + "-" + filename, // deploymentName
                     null,
                     tempFile);
             // deploying the files one by one because of limitation of OpenAPI at the moment
             // see https://jira.camunda.com/browse/CAM-13105
+        }
+    }
+
+    private String getResourceFilename(Resource camundaResource, String type) throws IOException {
+        if (camundaResource.getFilename() != null) {
+            return camundaResource.getFilename();
+        } else {
+            return DigestUtils.md5DigestAsHex(camundaResource.getInputStream()) + '.' + type;
         }
     }
 }
