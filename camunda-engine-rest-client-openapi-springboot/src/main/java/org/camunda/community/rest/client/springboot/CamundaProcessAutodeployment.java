@@ -49,8 +49,14 @@ public class CamundaProcessAutodeployment {
     @Value("${spring.application.name:spring-app}")
     private String applicationName;
 
+    @Value("${camunda.autoDeploy.enabled:true}")
+    private boolean autoDeployEnabled;
+
     @PostConstruct
     public void deployCamundaResources() throws IOException, ApiException {
+        if(!autoDeployEnabled){
+            return;
+        }
         if (bpmnResourcesPattern==null || bpmnResourcesPattern.length()==0) {
             bpmnResourcesPattern = "classpath*:**/*.bpmn"; // Not sure why the default mechanism in @Value makes problems - but this works!
         }
