@@ -104,6 +104,13 @@ camunda.autoDeploy.dmnResources: 'classpath*:**/*.dmn'
 camunda.autoDeploy.formResources: 'classpath*:**/*.form'
 ```
 
+You can disable auto deployment (which is enabled by default):
+
+```
+camunda.autoDeploy.enabled: false
+```
+
+
 ### Spring Boot OpenAPI + External Task Bundle
 
 Most often you might also want to use the OpenAPI, but also leverage the [Camunda External Task Client as Spring Boot Starter](https://github.com/camunda/camunda-bpm-platform/tree/master/spring-boot-starter/starter-client). To do so you can simply add this convenience library which bundles both:
