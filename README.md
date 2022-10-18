@@ -110,6 +110,10 @@ You can disable auto deployment (which is enabled by default):
 camunda.autoDeploy.enabled: false
 ```
 
+If you want to disable service start failure if it fails during deployment of the resource (which is enabled by default): 
+```
+camunda.autoDeploy.failStartupOnError: false
+```
 
 ### Spring Boot OpenAPI + External Task Bundle
 

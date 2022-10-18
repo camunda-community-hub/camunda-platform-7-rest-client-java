@@ -52,6 +52,9 @@ public class CamundaProcessAutodeployment {
     @Value("${camunda.autoDeploy.enabled:true}")
     private boolean autoDeployEnabled;
 
+    @Value("${camunda.autoDeploy.failStartupOnError:true}")
+    private boolean autoDeployFailStartupOnError;
+
     @PostConstruct
     public void deployCamundaResources() throws IOException, ApiException {
         if(!autoDeployEnabled){
@@ -79,22 +82,29 @@ public class CamundaProcessAutodeployment {
             // but the OpenAPI will need a File.
             // We still have to set the file ending correct in the temp file
             // (because otherwise the deployer will not pick it up as e.g. BPMN file)
-            String tempDirectoryName = FileUtils.getTempDirectory().getAbsolutePath();
-            String filename = getResourceFilename(camundaResource, type);
-            final File tempFile = new File(tempDirectoryName + File.separator + filename);
-            tempFile.deleteOnExit();
-            try (FileOutputStream out = new FileOutputStream(tempFile)) {
-                IOUtils.copy(camundaResource.getInputStream(), out);
+            try {
+                String tempDirectoryName = FileUtils.getTempDirectory().getAbsolutePath();
+                String filename = getResourceFilename(camundaResource, type);
+                final File tempFile = new File(tempDirectoryName + File.separator + filename);
+                tempFile.deleteOnExit();
+                try (FileOutputStream out = new FileOutputStream(tempFile)) {
+                    IOUtils.copy(camundaResource.getInputStream(), out);
+                }
+                logger.info("  - Now deploying: " + camundaResource);
+                deploymentApi.createDeployment(
+                        null,
+                        null,
+                        true, // changedOnly
+                        true, // duplicateFiltering
+                        applicationName + "-" + filename, // deploymentName
+                        null,
+                        tempFile);
+            } catch (Exception exception){
+                logger.error("Error Deploying resources for deployment of type "+ type +": " + resourcesToDeploy);
+                if(autoDeployFailStartupOnError){
+                    throw exception;
+                }
             }
-            logger.info("  - Now deploying: " + camundaResource);
-            deploymentApi.createDeployment(
-                    null,
-                    null,
-                    true, // changedOnly
-                    true, // duplicateFiltering
-                    applicationName + "-" + filename, // deploymentName
-                    null,
-                    tempFile);
             // deploying the files one by one because of limitation of OpenAPI at the moment
             // see https://jira.camunda.com/browse/CAM-13105
         }
