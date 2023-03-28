@@ -90,7 +90,7 @@
                 <apiPackage>org.camunda.community.rest.client.api</apiPackage>
                 <invokerPackage>org.camunda.community.rest.client.invoker</invokerPackage>
                 <modelPackage>org.camunda.community.rest.client.dto</modelPackage>
-                <dateLibrary>legacy</dateLibrary>
+                <dateLibrary>java8</dateLibrary>
                 <sourceFolder>src/gen/java/main</sourceFolder>
               </configOptions>
             </configuration>
