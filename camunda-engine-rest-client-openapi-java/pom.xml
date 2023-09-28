@@ -5,10 +5,14 @@
   <parent>
     <groupId>org.camunda.community</groupId>
     <artifactId>camunda-engine-rest-client-root</artifactId>
-    <version>7.19.1-SNAPSHOT</version>
+    <version>7.20.0-alpha6-SNAPSHOT</version>
   </parent>
 
   <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
+
+  <properties>
+    <jackson-databind-nullable-version>0.2.1</jackson-databind-nullable-version>
+  </properties>
 
   <dependencies> 
   
@@ -64,6 +68,12 @@
     </dependency>
 
     <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>${jackson-databind-nullable-version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
@@ -92,6 +102,9 @@
                 <modelPackage>org.camunda.community.rest.client.dto</modelPackage>
                 <dateLibrary>legacy</dateLibrary>
                 <sourceFolder>src/gen/java/main</sourceFolder>
+                <useJakartaEe>true</useJakartaEe>
+                <dateLibrary>java8</dateLibrary>
+                <library>native</library>
               </configOptions>
             </configuration>
           </execution>
