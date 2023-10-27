@@ -25,7 +25,7 @@ public class CamundaApi {
 
     @Bean
     public ConditionApi conditionApi() {
-        return new ConditionApi();
+        return new ConditionApi(apiClient);
     }
 
     @Bean
