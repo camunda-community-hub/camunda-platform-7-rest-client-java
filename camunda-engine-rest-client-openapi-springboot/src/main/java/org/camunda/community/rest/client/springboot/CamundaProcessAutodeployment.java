@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.camunda.community.rest.client.api.DeploymentApi;
@@ -15,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.util.DigestUtils;
@@ -25,7 +26,7 @@ import org.springframework.util.DigestUtils;
 @AutoConfiguration
 public class CamundaProcessAutodeployment {
 
-    private Logger logger = LoggerFactory.getLogger(CamundaProcessAutodeployment.class);
+    private static final Logger logger = LoggerFactory.getLogger(CamundaProcessAutodeployment.class);
 
     @Autowired
     private DeploymentApi deploymentApi;
@@ -49,18 +50,18 @@ public class CamundaProcessAutodeployment {
     @Value("${camunda.autoDeploy.enabled:true}")
     private boolean autoDeployEnabled;
 
-    @PostConstruct
+    @EventListener(ApplicationStartedEvent.class)
     public void deployCamundaResources() throws IOException, ApiException {
         if(!autoDeployEnabled){
             return;
         }
-        if (bpmnResourcesPattern==null || bpmnResourcesPattern.length()==0) {
+        if (bpmnResourcesPattern==null || bpmnResourcesPattern.isEmpty()) {
             bpmnResourcesPattern = "classpath*:**/*.bpmn"; // Not sure why the default mechanism in @Value makes problems - but this works!
         }
-        if (dmnResourcesPattern==null || dmnResourcesPattern.length()==0) {
+        if (dmnResourcesPattern==null || dmnResourcesPattern.isEmpty()) {
             dmnResourcesPattern = "classpath*:**/*.dmn";
         }
-        if (formResourcesPattern==null || formResourcesPattern.length()==0) {
+        if (formResourcesPattern==null || formResourcesPattern.isEmpty()) {
             formResourcesPattern = "classpath*:**/*.form";
         }
 
