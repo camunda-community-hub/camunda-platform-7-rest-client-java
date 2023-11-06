@@ -1,0 +1,4 @@
+org.camunda.community.rest.client.springboot.CamundaOpenApiStarter
+org.camunda.community.rest.client.springboot.CamundaApi
+org.camunda.community.rest.client.springboot.CamundaHistoryApi
+org.camunda.community.rest.client.springboot.CamundaProcessAutodeployment

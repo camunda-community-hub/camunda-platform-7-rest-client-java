@@ -4,10 +4,10 @@ package org.camunda.community.rest.client.springboot;
 import org.camunda.community.rest.client.api.*;
 import org.camunda.community.rest.client.invoker.ApiClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@AutoConfiguration
 public class CamundaApi {
 
     @Autowired
@@ -25,7 +25,7 @@ public class CamundaApi {
 
     @Bean
     public ConditionApi conditionApi() {
-        return new ConditionApi();
+        return new ConditionApi(apiClient);
     }
 
     @Bean
