@@ -1,98 +1,99 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
+    <parent>
+        <groupId>org.camunda.community</groupId>
+        <artifactId>community-hub-release-parent</artifactId>
+        <version>1.4.4</version>
+    </parent>
+
     <groupId>org.camunda.community</groupId>
-    <artifactId>community-hub-release-parent</artifactId>
-    <version>1.4.4</version>
-  </parent>
+    <artifactId>camunda-engine-rest-client-root</artifactId>
+    <version>7.20.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <groupId>org.camunda.community</groupId>
-  <artifactId>camunda-engine-rest-client-root</artifactId>
-  <version>7.20.3-SNAPSHOT</version>
-  <packaging>pom</packaging>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
 
-  <licenses>
-    <license>
-      <name>Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-  </licenses>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+        <camunda.version>7.20.0</camunda.version>
+        <springboot.version>2.7.4</springboot.version>
+    </properties>
 
-    <camunda.version>7.20.0</camunda.version>
-    <springboot.version>2.7.4</springboot.version>
-  </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.camunda.bpm</groupId>
+                <artifactId>camunda-bom</artifactId>
+                <version>${camunda.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.openapitools</groupId>
+                <artifactId>jackson-databind-nullable</artifactId>
+                <version>0.2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>3.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.15.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.camunda.community</groupId>
+                <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.camunda.community</groupId>
+                <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>7.2.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.2.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${springboot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${camunda.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.openapitools</groupId>
-        <artifactId>jackson-databind-nullable</artifactId>
-        <version>0.2.6</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.code.findbugs</groupId>
-        <artifactId>jsr305</artifactId>
-        <version>3.0.2</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-io</groupId>
-        <artifactId>commons-io</artifactId>
-        <version>2.15.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.community</groupId>
-        <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.camunda.community</groupId>
-        <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.openapitools</groupId>
-          <artifactId>openapi-generator-maven-plugin</artifactId>
-          <version>7.0.1</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.2.2</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
-
-  <modules>
-    <module>camunda-engine-rest-client-openapi-java</module>
-    <module>camunda-engine-rest-client-openapi-springboot</module>
-    <module>camunda-engine-rest-client-complete-springboot-starter</module>
-  </modules>
+    <modules>
+        <module>camunda-engine-rest-client-openapi-java</module>
+        <module>camunda-engine-rest-client-openapi-springboot</module>
+        <module>camunda-engine-rest-client-complete-springboot-starter</module>
+    </modules>
 
 </project>
