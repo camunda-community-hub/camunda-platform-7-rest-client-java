@@ -9,7 +9,7 @@
 
   <groupId>org.camunda.community</groupId>
   <artifactId>camunda-engine-rest-client-root</artifactId>
-  <version>7.20.4</version>
+  <version>7.20.5-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <licenses>
