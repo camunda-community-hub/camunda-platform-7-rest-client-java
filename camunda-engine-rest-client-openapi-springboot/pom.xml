@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.camunda.community</groupId>
     <artifactId>camunda-engine-rest-client-root</artifactId>
-    <version>7.20.5-SNAPSHOT</version>
+    <version>7.20.6-SNAPSHOT</version>
   </parent>
 
   <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
