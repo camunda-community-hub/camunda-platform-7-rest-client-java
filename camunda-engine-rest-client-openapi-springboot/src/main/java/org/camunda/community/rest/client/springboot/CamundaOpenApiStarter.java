@@ -8,16 +8,22 @@ import org.springframework.context.annotation.Bean;
 @AutoConfiguration
 public class CamundaOpenApiStarter {
 
-    @Value( "${camunda.bpm.client.base-url:null}" )
-    private String basePath;
+  private final String basePath;
 
-    @Bean
-    public ApiClient createApiClient() {
-        ApiClient client = new ApiClient();
-        if (basePath!=null) {
-            client.setBasePath(basePath);
-        }
-        return client;
+  public CamundaOpenApiStarter(@Value("${camunda.bpm.client.base-url:#{null}}") String basePath) {
+    this.basePath = basePath;
+  }
+
+  public String getBasePath() {
+    return basePath;
+  }
+
+  @Bean
+  public ApiClient createApiClient() {
+    ApiClient client = new ApiClient();
+    if (basePath != null) {
+      client.setBasePath(basePath);
     }
-
+    return client;
+  }
 }
