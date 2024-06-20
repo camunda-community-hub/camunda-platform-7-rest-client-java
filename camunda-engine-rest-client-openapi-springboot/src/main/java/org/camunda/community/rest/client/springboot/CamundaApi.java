@@ -85,6 +85,16 @@ public class CamundaApi {
   }
 
   @Bean
+  public IncidentApi incidentApi() {
+    return new IncidentApi(apiClient);
+  }
+
+  @Bean
+  public JobApi jobApi() {
+    return new JobApi(apiClient);
+  }
+
+  @Bean
   public JobDefinitionApi jobDefinitionApi() {
     return new JobDefinitionApi(apiClient);
   }
@@ -147,6 +157,11 @@ public class CamundaApi {
   @Bean
   public TaskIdentityLinkApi taskIdentityLinkApi() {
     return new TaskIdentityLinkApi(apiClient);
+  }
+
+  @Bean
+  public TaskVariableApi taskVariableApi() {
+    return new TaskVariableApi(apiClient);
   }
 
   @Bean
