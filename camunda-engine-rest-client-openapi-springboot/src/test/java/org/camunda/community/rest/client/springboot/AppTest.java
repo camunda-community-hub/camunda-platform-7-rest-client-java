@@ -27,4 +27,10 @@ public class AppTest {
   void shouldNotSetBaseUrl() {
     assertThat(starter.getBasePath()).isNull();
   }
+
+  @Test
+  void shouldNotSetCredentials() {
+    assertThat(starter.getUsername()).isNull();
+    assertThat(starter.getPassword()).isNull();
+  }
 }
