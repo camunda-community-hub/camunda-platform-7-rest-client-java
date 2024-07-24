@@ -45,7 +45,7 @@ public class CamundaProcessAutodeployment {
   // TODO Possible extension: Provide a @Deployment annotation like Spring Zeebe
   @EventListener(ApplicationStartedEvent.class)
   public void deployCamundaResources() throws IOException, ApiException {
-    if (!properties.getEnabled()) {
+    if (!properties.isEnabled()) {
       return;
     }
     deployResources(
@@ -85,7 +85,7 @@ public class CamundaProcessAutodeployment {
       } catch (Exception exception) {
         logger.error(
             "Error Deploying resources for deployment of type " + type + ": " + resourcesToDeploy);
-        if (properties.getFailStartupOnError()) {
+        if (properties.isFailStartupOnError()) {
           throw exception;
         }
       }

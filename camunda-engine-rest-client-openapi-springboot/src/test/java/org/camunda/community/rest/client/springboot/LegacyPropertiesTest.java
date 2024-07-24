@@ -22,10 +22,10 @@ public class LegacyPropertiesTest {
 
   @Test
   void shouldSetLegacyProperties() {
-    assertThat(properties.getEnabled()).isEqualTo(false);
+    assertThat(properties.isEnabled()).isFalse();
     assertThat(properties.getBpmnResources()).isEqualTo("custom");
     assertThat(properties.getDmnResources()).isEqualTo("custom");
     assertThat(properties.getFormResources()).isEqualTo("custom");
-    assertThat(properties.getFailStartupOnError()).isEqualTo(false);
+    assertThat(properties.isFailStartupOnError()).isFalse();
   }
 }
