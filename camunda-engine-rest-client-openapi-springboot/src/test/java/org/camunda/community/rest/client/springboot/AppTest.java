@@ -16,11 +16,11 @@ public class AppTest {
 
   @Test
   void shouldSetDefaultProperties() {
-    assertThat(properties.getEnabled()).isEqualTo(true);
+    assertThat(properties.isEnabled()).isTrue();
     assertThat(properties.getBpmnResources()).isEqualTo("classpath*:**/*.bpmn");
     assertThat(properties.getDmnResources()).isEqualTo("classpath*:**/*.dmn");
     assertThat(properties.getFormResources()).isEqualTo("classpath*:**/*.form");
-    assertThat(properties.getFailStartupOnError()).isEqualTo(true);
+    assertThat(properties.isFailStartupOnError()).isTrue();
   }
 
   @Test
