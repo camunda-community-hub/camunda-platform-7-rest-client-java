@@ -4,11 +4,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("camunda.auto-deploy")
 public class CamundaAutodeploymentProperties {
-  private String bpmnResources;
-  private String dmnResources;
-  private String formResources;
-  private Boolean enabled;
-  private Boolean failStartupOnError;
+  private String bpmnResources = "classpath*:**/*.bpmn";
+  private String dmnResources = "classpath*:**/*.dmn";
+  private String formResources = "classpath*:**/*.form";
+  private boolean enabled = true;
+  private boolean failStartupOnError = true;
 
   public String getBpmnResources() {
     return bpmnResources;
@@ -34,19 +34,19 @@ public class CamundaAutodeploymentProperties {
     this.formResources = formResources;
   }
 
-  public Boolean getEnabled() {
+  public boolean isEnabled() {
     return enabled;
   }
 
-  public void setEnabled(Boolean enabled) {
+  public void setEnabled(boolean enabled) {
     this.enabled = enabled;
   }
 
-  public Boolean getFailStartupOnError() {
+  public boolean isFailStartupOnError() {
     return failStartupOnError;
   }
 
-  public void setFailStartupOnError(Boolean failStartupOnError) {
+  public void setFailStartupOnError(boolean failStartupOnError) {
     this.failStartupOnError = failStartupOnError;
   }
 }

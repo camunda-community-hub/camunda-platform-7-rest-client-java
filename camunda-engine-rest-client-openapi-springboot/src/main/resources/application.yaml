@@ -1,7 +1,0 @@
-camunda:
-  auto-deploy:
-    bpmn-resources: "classpath*:**/*.bpmn"
-    dmn-resources: "classpath*:**/*.dmn"
-    form-resources: "classpath*:**/*.form"
-    enabled: true
-    fail-startup-on-error: true
