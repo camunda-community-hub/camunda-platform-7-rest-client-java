@@ -193,4 +193,9 @@ public class CamundaApi {
   public VersionApi versionApi() {
     return new VersionApi(apiClient);
   }
+
+  @Bean
+  public ProcessInstanceCommentApi processInstanceCommentApi() {
+    return new ProcessInstanceCommentApi(apiClient);
+  }
 }
