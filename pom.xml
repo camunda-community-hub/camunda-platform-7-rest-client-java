@@ -22,11 +22,11 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
 
     <camunda.version>7.23.0</camunda.version>
-    <springboot.version>2.7.18</springboot.version>
+    <springboot.version>3.5.0</springboot.version>
   </properties>
 
   <dependencyManagement>

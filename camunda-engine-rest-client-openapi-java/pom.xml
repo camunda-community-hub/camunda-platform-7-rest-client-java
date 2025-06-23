@@ -84,6 +84,7 @@
                 <library>apache-httpclient</library>
                 <dateLibrary>java8</dateLibrary>
                 <testOutput>${project.build.directory}/generated-test-sources/openapi</testOutput>
+                <useJakartaEe>true</useJakartaEe>
               </configOptions>
             </configuration>
           </execution>
