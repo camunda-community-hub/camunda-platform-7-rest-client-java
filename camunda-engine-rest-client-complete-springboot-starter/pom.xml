@@ -8,17 +8,17 @@
   </parent>
 
   <artifactId>camunda-engine-rest-client-complete-springboot-starter</artifactId>
-
-	<dependencies>
-		<!-- External Task client -->
-		<dependency>
-		  <groupId>org.camunda.community</groupId>
-		  <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
-		</dependency>
-		<!-- Open API client -->
-		<dependency>
-		  <groupId>org.camunda.bpm.springboot</groupId>
-		  <artifactId>camunda-bpm-spring-boot-starter-external-task-client</artifactId>
-		</dependency>
-	</dependencies>
+  <name>Camunda Engine REST Client Complete Spring Boot Starter</name>
+  <dependencies>
+    <!-- External Task client -->
+    <dependency>
+      <groupId>org.camunda.community</groupId>
+      <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
+    </dependency>
+    <!-- Open API client -->
+    <dependency>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter-external-task-client</artifactId>
+    </dependency>
+  </dependencies>
 </project>

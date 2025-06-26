@@ -8,7 +8,7 @@
   </parent>
 
   <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
-
+	<name>Camunda Engine REST Client OpenApi Spring Boot</name>
 	<dependencies>
 		<dependency>
 		  <groupId>org.camunda.community</groupId>
