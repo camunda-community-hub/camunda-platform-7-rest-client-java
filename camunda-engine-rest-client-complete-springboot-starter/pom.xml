@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -9,16 +10,16 @@
 
   <artifactId>camunda-engine-rest-client-complete-springboot-starter</artifactId>
 
-	<dependencies>
-		<!-- External Task client -->
-		<dependency>
-		  <groupId>org.camunda.community</groupId>
-		  <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
-		</dependency>
-		<!-- Open API client -->
-		<dependency>
-		  <groupId>org.camunda.bpm.springboot</groupId>
-		  <artifactId>camunda-bpm-spring-boot-starter-external-task-client</artifactId>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <!-- External Task client -->
+    <dependency>
+      <groupId>org.camunda.community</groupId>
+      <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
+    </dependency>
+    <!-- Open API client -->
+    <dependency>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter-external-task-client</artifactId>
+    </dependency>
+  </dependencies>
 </project>

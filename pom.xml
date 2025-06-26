@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -18,6 +19,12 @@
       <url>http://www.apache.org/licenses/LICENSE-2.0</url>
     </license>
   </licenses>
+
+  <modules>
+    <module>camunda-engine-rest-client-openapi-java</module>
+    <module>camunda-engine-rest-client-openapi-springboot</module>
+    <module>camunda-engine-rest-client-complete-springboot-starter</module>
+  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -127,24 +134,21 @@
           <artifactId>spotless-maven-plugin</artifactId>
           <version>2.44.5</version>
           <configuration>
-            <formats>
-              <format>
-                <includes>
-                  <include>*.md</include>
-                  <include>.gitignore</include>
-                </includes>
-                <trimTrailingWhitespace />
-                <endWithNewline />
-                <indent>
-                  <spaces>true</spaces>
-                  <spacesPerTab>2</spacesPerTab>
-                </indent>
-              </format>
-            </formats>
             <java>
               <googleJavaFormat />
             </java>
-            <pom />
+            <pom>
+              <sortPom>
+                <nrOfIndentSpace>2</nrOfIndentSpace>
+                <expandEmptyElements>false</expandEmptyElements>
+                <spaceBeforeCloseEmptyElement>true</spaceBeforeCloseEmptyElement>
+              </sortPom>
+            </pom>
+            <markdown>
+              <includes>
+                <include>**/*.md</include>
+              </includes>
+            </markdown>
           </configuration>
         </plugin>
       </plugins>
@@ -168,12 +172,6 @@
       </plugin>
     </plugins>
   </build>
-
-  <modules>
-    <module>camunda-engine-rest-client-openapi-java</module>
-    <module>camunda-engine-rest-client-openapi-springboot</module>
-    <module>camunda-engine-rest-client-complete-springboot-starter</module>
-  </modules>
 
   <profiles>
     <profile>
