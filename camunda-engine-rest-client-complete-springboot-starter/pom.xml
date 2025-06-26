@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>camunda-engine-rest-client-complete-springboot-starter</artifactId>
-
+  <name>Camunda Engine REST Client Complete Spring Boot Starter</name>
   <dependencies>
     <!-- External Task client -->
     <dependency>
