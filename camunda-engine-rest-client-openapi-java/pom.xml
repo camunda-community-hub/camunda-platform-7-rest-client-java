@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
-
+  <name>Camunda Engine REST Client OpenApi Java</name>
   <dependencies>
 
     <!-- @Nullable annotation -->
