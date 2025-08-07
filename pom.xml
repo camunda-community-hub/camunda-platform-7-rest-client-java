@@ -3,16 +3,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.camunda.community</groupId>
+    <groupId>org.cibseven.community</groupId>
     <artifactId>community-hub-release-parent</artifactId>
     <version>2.1.0</version>
   </parent>
 
-  <groupId>org.camunda.community</groupId>
-  <artifactId>camunda-engine-rest-client-root</artifactId>
-  <version>7.23.0-SNAPSHOT</version>
+  <groupId>org.cibseven.community</groupId>
+  <artifactId>cibseven-engine-rest-client-root</artifactId>
+  <version>2.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Camunda Engine REST Client Root</name>
+  <name>CIB seven Engine REST Client Root</name>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
@@ -21,9 +21,9 @@
   </licenses>
 
   <modules>
-    <module>camunda-engine-rest-client-openapi-java</module>
-    <module>camunda-engine-rest-client-openapi-springboot</module>
-    <module>camunda-engine-rest-client-complete-springboot-starter</module>
+    <module>cibseven-engine-rest-client-openapi-java</module>
+    <module>cibseven-engine-rest-client-openapi-springboot</module>
+    <module>cibseven-engine-rest-client-complete-springboot-starter</module>
   </modules>
 
   <properties>
@@ -32,7 +32,7 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
 
-    <camunda.version>7.23.0</camunda.version>
+    <cibseven.version>2.1.0</cibseven.version>
     <springboot.version>3.5.4</springboot.version>
   </properties>
 
@@ -46,9 +46,9 @@
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>org.camunda.bpm</groupId>
-        <artifactId>camunda-bom</artifactId>
-        <version>${camunda.version}</version>
+        <groupId>org.cibseven.bpm</groupId>
+        <artifactId>cibseven-bom</artifactId>
+        <version>${cibseven.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -68,13 +68,13 @@
         <version>2.20.0</version>
       </dependency>
       <dependency>
-        <groupId>org.camunda.community</groupId>
-        <artifactId>camunda-engine-rest-client-openapi-java</artifactId>
+        <groupId>org.cibseven.community</groupId>
+        <artifactId>cibseven-engine-rest-client-openapi-java</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.camunda.community</groupId>
-        <artifactId>camunda-engine-rest-client-openapi-springboot</artifactId>
+        <groupId>org.cibseven.community</groupId>
+        <artifactId>cibseven-engine-rest-client-openapi-springboot</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>

@@ -1,0 +1,4 @@
+org.cibseven.community.rest.client.springboot.CibSevenOpenApiStarter
+org.cibseven.community.rest.client.springboot.CibSevenApi
+org.cibseven.community.rest.client.springboot.CibSevenHistoryApi
+org.cibseven.community.rest.client.springboot.CibSevenProcessAutodeployment
