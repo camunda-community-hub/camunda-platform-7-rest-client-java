@@ -1,8 +1,16 @@
 # CIB seven Engine OpenAPI REST Client Java and Spring Boot
 
-[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/cibseven-community-hub/community) [![](https://img.shields.io/badge/Lifecycle-Incubating-blue)](https://github.com/CIBseven-Community-Hub/community/blob/main/extension-lifecycle.md#incubating-) ![Compatible with: CIB seven Platform 7](https://img.shields.io/badge/Compatible%20with-CIB%20seven%20Platform%207-26d07c)
+[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/cibseven-community-hub/community) [![](https://img.shields.io/badge/Lifecycle-Incubating-blue)](https://github.com/CIBseven-Community-Hub/community/blob/main/extension-lifecycle.md#incubating-) ![Compatible with: CIB seven 2](https://img.shields.io/badge/Compatible%20with-CIB%20seven%202-26d07c)
 
-This community extension is a convenience wrapper around the generated Java client from the CIB seven Platform 7.x OpenAPI spec.
+This community extension is a convenience wrapper around the generated Java client from the CIB seven 2.x OpenAPI spec.
+
+## Requirements
+
+|             |        |
+| ----------- | ------ |
+| CIB seven   | 2.2.x  |
+| Spring Boot | 4.0.x  |
+| Java        | 17+    |
 
 ## Example application
 
@@ -20,7 +28,7 @@ In a plain Java project you can simply add this dependency (**please make sure t
     <dependency>
       <groupId>org.cibseven.community</groupId>
       <artifactId>cibseven-engine-rest-client-openapi-java</artifactId>
-      <version>7.23.0</version>
+      <version>2.1.0</version>
     </dependency>
 ```
 
@@ -64,7 +72,7 @@ Add this dependency:
     <dependency>
       <groupId>org.cibseven.community</groupId>
       <artifactId>cibseven-engine-rest-client-openapi-springboot</artifactId>
-      <version>7.20.0</version>
+      <version>2.1.0</version>
     </dependency>
 ```
 
@@ -125,7 +133,7 @@ Most often you might also want to use the OpenAPI, but also leverage the [CIB se
     <dependency>
       <groupId>org.cibseven.community</groupId>
       <artifactId>cibseven-engine-rest-client-complete-springboot-starter</artifactId>
-      <version>7.20.0</version>
+      <version>2.1.0</version>
     </dependency>
 ```
 
