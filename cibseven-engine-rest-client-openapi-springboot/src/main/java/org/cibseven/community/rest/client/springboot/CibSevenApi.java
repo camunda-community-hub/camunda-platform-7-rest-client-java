@@ -30,6 +30,11 @@ public class CibSevenApi {
   }
 
   @Bean
+  public ConfigurationApi configurationApi() {
+    return new ConfigurationApi(apiClient);
+  }
+
+  @Bean
   public DecisionDefinitionApi decisionDefinitionApi() {
     return new DecisionDefinitionApi(apiClient);
   }
