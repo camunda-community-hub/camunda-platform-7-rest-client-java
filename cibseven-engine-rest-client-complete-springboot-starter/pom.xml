@@ -19,7 +19,7 @@
     <!-- External Task client -->
     <dependency>
       <groupId>org.cibseven.bpm.springboot</groupId>
-      <artifactId>cibseven-bpm-spring-boot-starter-external-task-client</artifactId>
+      <artifactId>cibseven-bpm-spring-boot-starter-external-task-client-4</artifactId>
     </dependency>
   </dependencies>
 </project>
