@@ -14,9 +14,6 @@ This community extension is a convenience wrapper around the generated Java clie
 | Spring Boot | 4.0.x  |
 | Java        | 17+    |
 
-## Example application
-
-An example application using this community extension in a Spring Boot context can be found here: https://github.com/berndruecker/cibseven-platform-remote-spring-boot-example
 
 ## Using the client
 
