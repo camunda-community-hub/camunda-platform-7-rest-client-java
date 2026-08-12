@@ -1,8 +1,10 @@
 # CIB seven Engine OpenAPI REST Client Java and Spring Boot
 
-[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/cibseven-community-hub/community) [![](https://img.shields.io/badge/Lifecycle-Incubating-blue)](https://github.com/CIBseven-Community-Hub/community/blob/main/extension-lifecycle.md#incubating-) ![Compatible with: CIB seven 2](https://img.shields.io/badge/Compatible%20with-CIB%20seven%202-26d07c)
+[![CIB seven 2.2.0](https://img.shields.io/badge/CIB%20seven-2.2.0-orange.svg)](https://docs.cibseven.org/manual/2.2/)
+[![Maven Central](https://img.shields.io/maven-central/v/org.cibseven.community.rest-client/cibseven-engine-rest-client-openapi-java?label=Maven%20Central)](https://central.sonatype.com/artifact/org.cibseven.community.rest-client/cibseven-engine-rest-client-openapi-java)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-This community extension is a convenience wrapper around the generated Java client from the CIB seven 2.x OpenAPI spec.
+This community extension is a convenience wrapper around the generated Java client from the CIB seven 2.2.x OpenAPI spec.
 
 ## Requirements
 
@@ -28,7 +30,7 @@ In a plain Java project you can simply add this dependency (**please make sure t
     <dependency>
       <groupId>org.cibseven.community</groupId>
       <artifactId>cibseven-engine-rest-client-openapi-java</artifactId>
-      <version>2.1.0</version>
+      <version>2.2.0</version>
     </dependency>
 ```
 
@@ -72,7 +74,7 @@ Add this dependency:
     <dependency>
       <groupId>org.cibseven.community</groupId>
       <artifactId>cibseven-engine-rest-client-openapi-springboot</artifactId>
-      <version>2.1.0</version>
+      <version>2.2.0</version>
     </dependency>
 ```
 
@@ -101,6 +103,7 @@ public class ExampleRestEndpoint {
                 ProcessConstants.PROCESS_KEY,
                 new StartProcessInstanceDto().variables(variables));
         // ...
+}
 ```
 
 #### Auto Deployment
@@ -133,7 +136,7 @@ Most often you might also want to use the OpenAPI, but also leverage the [CIB se
     <dependency>
       <groupId>org.cibseven.community</groupId>
       <artifactId>cibseven-engine-rest-client-complete-springboot-starter</artifactId>
-      <version>2.1.0</version>
+      <version>2.2.0</version>
     </dependency>
 ```
 
@@ -151,4 +154,5 @@ public class ExampleCheckNumberWorker implements ExternalTaskHandler {
       // ...
       externalTaskService.complete(externalTask);
     }
+}
 ```
