@@ -25,7 +25,7 @@ In a plain Java project you can simply add this dependency (**please make sure t
 
 ```
     <dependency>
-      <groupId>org.cibseven.community</groupId>
+      <groupId>org.cibseven.community.rest-client</groupId>
       <artifactId>cibseven-engine-rest-client-openapi-java</artifactId>
       <version>2.2.0</version>
     </dependency>
@@ -69,7 +69,7 @@ Add this dependency:
 
 ```
     <dependency>
-      <groupId>org.cibseven.community</groupId>
+      <groupId>org.cibseven.community.rest-client</groupId>
       <artifactId>cibseven-engine-rest-client-openapi-springboot</artifactId>
       <version>2.2.0</version>
     </dependency>
@@ -131,7 +131,7 @@ Most often you might also want to use the OpenAPI, but also leverage the [CIB se
 
 ```
     <dependency>
-      <groupId>org.cibseven.community</groupId>
+      <groupId>org.cibseven.community.rest-client</groupId>
       <artifactId>cibseven-engine-rest-client-complete-springboot-starter</artifactId>
       <version>2.2.0</version>
     </dependency>
