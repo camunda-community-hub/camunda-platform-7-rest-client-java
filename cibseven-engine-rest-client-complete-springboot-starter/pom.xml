@@ -22,4 +22,43 @@
       <artifactId>cibseven-bpm-spring-boot-starter-external-task-client</artifactId>
     </dependency>
   </dependencies>
+
+  <profiles>
+    <!--
+      Force both maven-source-plugin and maven-javadoc-plugin to be created (empty),
+      so Maven Central doesn't reject the deployment.
+    -->
+    <profile>
+      <id>javadocAndSources</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <configuration>
+              <forceCreation>true</forceCreation>
+            </configuration>
+          </plugin>
+          <plugin>
+            <!-- maven-javadoc-plugin has no forceCreation equivalent, so build the empty jar directly -->
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>empty-javadoc-jar</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <phase>package</phase>
+                <configuration>
+                  <classifier>javadoc</classifier>
+                  <classesDirectory>${project.build.directory}/empty-javadoc</classesDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
