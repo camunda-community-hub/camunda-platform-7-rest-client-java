@@ -145,6 +145,7 @@ pipeline {
                                     -Dgpg.keyname="${GPG_KEYNAME}" \
                                     -Dgpg.passphrase="${GPG_KEY_PASS}" \
                                     clean deploy \
+                                    -PjavadocAndSources \
                                     -Psonatype-oss-release \
                                     -Dskip.cibseven.release="${!params.DEPLOY_TO_ARTIFACTS}"
                             """

@@ -1,11 +1,7 @@
 name: Deploy artifacts with Maven
+# Manual only: deployment is owned by the Jenkins pipeline (see Jenkinsfile)
 on:
-  push:
-    branches:
-    - main
-    - release/**
-  release:
-    types: [published]
+  workflow_dispatch:
 jobs:
   publish:
     runs-on: ubuntu-latest
